@@ -1,6 +1,7 @@
 env.conf
 .DS_Store
 */.aws-sam
+*/samconfig.toml
 Skip to content
 Search or jump to…
 
