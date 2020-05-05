@@ -1,0 +1,47 @@
+{
+  "Records": [
+    {
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-2:123456789012:sns-lambda:21be56ed-a058-49f5-8c98-aedd2564c486",
+      "EventSource": "aws:sns",
+      "Sns": {
+        "SignatureVersion": "1",
+        "Timestamp": "2019-01-02T12:45:07.000Z",
+        "Signature": "tcc6faL2yUC6dgZdmrwh1Y4cGa/ebXEkAi6RibDsvpi+tE/1+82j...65r==",
+        "SigningCertUrl": "https://sns.us-east-2.amazonaws.com/SimpleNotificationService-ac565b8b1a6c5d002d285f9598aa1d9b.pem",
+        "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
+        "Message": {
+          "account": "072484622420",
+          "detailType": "CodePipeline Action Execution State Change",
+          "region": "ap-northeast-1",
+          "source": "aws.codepipeline",
+          "time": "2020-04-29T15:42:46Z",
+          "notificationRuleArn": "arn:aws:codestar-notifications:ap-northeast-1:072484622420:notificationrule/6bbbc268d1a91d72edb1d81ef0837a470da6912c",
+          "detail": {
+            "pipeline": "m3-production-pipeline",
+            "execution-id": "52b4b40f-4c0d-4eae-9b8c-be775ef664c6",
+            "stage": "Build",
+            "action": "Build",
+            "state": "SUCCEEDED",
+            "region": "ap-northeast-1",
+            "type": {
+              "owner": "AWS",
+              "provider": "CodeBuild",
+              "category": "Build",
+              "version": "1"
+            },
+            "version": 2
+          },
+          "resources": [
+            "arn:aws:codepipeline:ap-northeast-1:072484622420:m3-production-pipeline"
+          ],
+          "additionalAttributes": {}
+        },
+        "Type": "Notification",
+        "UnsubscribeUrl": "https://sns.us-east-2.amazonaws.com/?Action=Unsubscribe&amp;SubscriptionArn=arn:aws:sns:us-east-2:123456789012:test-lambda:21be56ed-a058-49f5-8c98-aedd2564c486",
+        "TopicArn": "arn:aws:sns:us-east-2:123456789012:sns-lambda",
+        "Subject": "TestInvoke"
+      }
+    }
+  ]
+}
