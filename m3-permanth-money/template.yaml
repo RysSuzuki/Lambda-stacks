@@ -4,17 +4,47 @@ Description: >
   m3-permanth-money
 
   Sample SAM Template for m3-permanth-money
-
 Globals:
   Function:
     Timeout: 3
 Resources:
-  HelloWorldFunction:
+  MainFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: hello_world/
-      Handler: app.lambda_handler
+      CodeUri: src/
+      Handler: main.lambda_handler
       Runtime: python3.7
-      Environment:
-        Variables:
-          IDOBATA_WEBHOOK_URL: IDOBATA_WEBHOOK_URL
+      Role: !GetAtt EC2OperationIamRole.Arn
+      Events:
+        M3PermanthMoneyschedule:
+            Type: Schedule
+            Properties:
+                Schedule: cron(00 23 * * ? *)
+  EC2OperationIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: "sts:AssumeRole"
+      Policies:
+        -
+          PolicyName: "EC2-operation-iam"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              -
+                Effect: "Allow"
+                Action: "cloudwatch:*"
+                Resource: "*"
+              -
+                Effect: "Allow"
+                Action: "ec2:*"
+                Resource: "*"
+              -
+                Effect: "Allow"
+                Action: "ssm:*"
+                Resource: "*"
