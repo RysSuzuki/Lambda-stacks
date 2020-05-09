@@ -46,5 +46,5 @@ Resources:
   MainFunctionLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-      LogGroupName: !Sub /aws/m3-Project/${MainFunction}
+      LogGroupName: !Sub /aws/lambda/${MainFunction}
       RetentionInDays: 7
