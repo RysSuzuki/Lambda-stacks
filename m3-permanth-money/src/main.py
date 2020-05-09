@@ -19,7 +19,7 @@ def ec2_runcommand(id_list):
       DocumentName = "AWS-RunShellScript",
       Parameters = {
           "commands": [
-              "docker exec -i monthly_money_manager_app_1  bundle exec rake notification:cancellation_service"
+              "docker exec -i monthly_money_manager_app_1  bundle exec rake notification:permanth_money"
           ],
           "executionTimeout": ['3600']
       },

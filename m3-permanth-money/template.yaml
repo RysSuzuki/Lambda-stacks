@@ -19,7 +19,7 @@ Resources:
         M3PermanthMoneyschedule:
             Type: Schedule
             Properties:
-                Schedule: cron(00 23 * * ? *)
+                Schedule: cron(00 23 25 * ? *)
   EC2OperationIamRole:
     Type: AWS::IAM::Role
     Properties:
@@ -36,15 +36,15 @@ Resources:
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
-              -
                 Effect: "Allow"
-                Action: "cloudwatch:*"
+                Action:
+                  - "cloudwatch:*"
+                  - "logs:*"
+                  - "ec2:*"
+                  - "ssm:*"
                 Resource: "*"
-              -
-                Effect: "Allow"
-                Action: "ec2:*"
-                Resource: "*"
-              -
-                Effect: "Allow"
-                Action: "ssm:*"
-                Resource: "*"
+  MainFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/m3-Project/${MainFunction}
+      RetentionInDays: 7
