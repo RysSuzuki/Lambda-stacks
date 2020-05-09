@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  m3-permanth-cancellation
+
+  Sample SAM Template for m3-permanth-cancellation
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  MainFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: main.lambda_handler
+      Runtime: python3.7
+      Role: !GetAtt EC2OperationIamRole.Arn
+      Events:
+        M3PermanthCanellationschedule:
+            Type: Schedule
+            Properties:
+                Schedule: cron(00 23 * * ? *)
+  EC2OperationIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: "sts:AssumeRole"
+      Policies:
+        -
+          PolicyName: "EC2-operation-iam"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+                Effect: "Allow"
+                Action:
+                  - "cloudwatch:*"
+                  - "logs:*"
+                  - "ec2:*"
+                  - "ssm:*"
+                Resource: "*"
+  MainFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/m3-Project/${MainFunction}
+      RetentionInDays: 7
