@@ -1,34 +1,9 @@
 env.conf
 .DS_Store
+.vscode
 */.aws-sam
 */samconfig.toml
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@RysSuzuki 
-RysSuzuki
-/
-Lambda-stacks
-1
-00
- Code
- Issues 0
- Pull requests 0 Actions
- Projects 0
- Wiki
- Security 0
- Insights
- Settings
-Lambda-stacks/m3-permanth-money/.gitignore
- RysSuzuki ✨ add： first commit
-ac325cd 19 minutes ago
-244 lines (187 sloc)  3.64 KB
-  
+local_test
 
 # Created by https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
 
